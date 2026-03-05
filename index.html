@@ -1,0 +1,657 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>马源骏｜个人主页（沙雕版）</title>
+  <meta name="description" content="马源骏的个人主页：食品实验室检验员，严谨中带点沙雕。" />
+  <style>
+    :root {
+      --bg: #f5f7fb;
+      --card: #ffffff;
+      --text: #1f2d3d;
+      --muted: #65758b;
+      --brand: #2f6fed;
+      --brand-2: #5f8fff;
+      --line: #e6ebf2;
+      --shadow: 0 12px 30px rgba(23, 43, 77, 0.08);
+      --radius: 16px;
+      --maxw: 1100px;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--text);
+      font-family: "PingFang SC", "Microsoft YaHei", "Noto Sans SC", Arial, sans-serif;
+      line-height: 1.85;
+    }
+
+    a { color: var(--brand); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    .wrap {
+      max-width: var(--maxw);
+      margin: 28px auto 40px;
+      padding: 0 16px;
+    }
+
+    .hero {
+      background: linear-gradient(135deg, #2b62da, #3157b8 55%, #2a468b);
+      color: #fff;
+      border-radius: 20px;
+      padding: 28px 24px;
+      box-shadow: var(--shadow);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before,
+    .hero::after {
+      content: "";
+      position: absolute;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.10);
+      filter: blur(2px);
+    }
+
+    .hero::before {
+      width: 240px;
+      height: 240px;
+      right: -70px;
+      top: -80px;
+    }
+
+    .hero::after {
+      width: 180px;
+      height: 180px;
+      left: -50px;
+      bottom: -70px;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 1;
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 18px;
+      align-items: center;
+    }
+
+    .hero h1 {
+      margin: 0 0 8px;
+      font-size: 34px;
+      line-height: 1.2;
+      letter-spacing: 0.5px;
+    }
+
+    .hero .subtitle {
+      margin: 0;
+      font-size: 16px;
+      color: rgba(255,255,255,0.88);
+    }
+
+    .badge-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 14px;
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 6px 12px;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.14);
+      border: 1px solid rgba(255,255,255,0.16);
+      color: #fff;
+      font-size: 13px;
+      white-space: nowrap;
+    }
+
+    .hero-side {
+      min-width: 220px;
+      text-align: right;
+    }
+
+    .quote {
+      margin: 0;
+      padding: 12px 14px;
+      border-radius: 12px;
+      background: rgba(255,255,255,0.12);
+      border: 1px solid rgba(255,255,255,0.16);
+      color: rgba(255,255,255,0.95);
+      font-size: 14px;
+      line-height: 1.7;
+    }
+
+    .layout {
+      margin-top: 18px;
+      display: grid;
+      grid-template-columns: 260px 1fr;
+      gap: 18px;
+      align-items: start;
+    }
+
+    .side {
+      position: sticky;
+      top: 16px;
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      box-shadow: 0 6px 20px rgba(23, 43, 77, 0.05);
+      padding: 14px;
+    }
+
+    .side h2 {
+      margin: 2px 0 10px;
+      font-size: 16px;
+      color: var(--text);
+    }
+
+    .toc {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .toc li { margin: 4px 0; }
+
+    .toc a {
+      display: block;
+      padding: 8px 10px;
+      border-radius: 10px;
+      color: #334155;
+      font-size: 14px;
+      transition: background .15s ease, color .15s ease;
+    }
+
+    .toc a:hover {
+      background: #eef4ff;
+      color: #133f9e;
+      text-decoration: none;
+    }
+
+    .toc a.active {
+      background: #eaf1ff;
+      color: #1747af;
+      font-weight: 700;
+    }
+
+    .tip-card {
+      margin-top: 12px;
+      padding: 10px 12px;
+      border-radius: 12px;
+      border: 1px dashed #cfe0ff;
+      background: #f7faff;
+      color: #58739c;
+      font-size: 13px;
+      line-height: 1.7;
+    }
+
+    .main {
+      min-width: 0;
+    }
+
+    .panel {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      box-shadow: 0 6px 20px rgba(23, 43, 77, 0.05);
+      padding: 22px 22px 8px;
+    }
+
+    .section {
+      margin-bottom: 26px;
+      scroll-margin-top: 20px;
+    }
+
+    .section h3 {
+      margin: 0 0 12px;
+      font-size: 22px;
+      line-height: 1.35;
+      color: #162a45;
+      position: relative;
+      padding-left: 12px;
+    }
+
+    .section h3::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 6px;
+      width: 4px;
+      height: 22px;
+      border-radius: 99px;
+      background: linear-gradient(180deg, var(--brand), var(--brand-2));
+    }
+
+    .section p {
+      margin: 0 0 14px;
+      font-size: 16px;
+      color: #2b3a4c;
+      text-align: justify;
+    }
+
+    .section ul {
+      margin: 6px 0 14px 0;
+      padding-left: 18px;
+    }
+
+    .section li {
+      margin: 8px 0;
+      color: #2b3a4c;
+    }
+
+    .highlight {
+      background: linear-gradient(transparent 55%, #fff1a8 55%);
+      padding: 0 2px;
+      border-radius: 4px;
+    }
+
+    .callout {
+      margin: 8px 0 16px;
+      padding: 12px 14px;
+      border-left: 4px solid var(--brand);
+      background: #f7faff;
+      border-radius: 10px;
+      color: #30445f;
+      font-size: 15px;
+    }
+
+    .grid-2 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+      margin: 8px 0 14px;
+    }
+
+    .mini {
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      padding: 12px 14px;
+      background: #fbfdff;
+    }
+
+    .mini h4 {
+      margin: 0 0 8px;
+      font-size: 15px;
+      color: #203a63;
+    }
+
+    .mini ul {
+      margin: 0;
+      padding-left: 16px;
+      font-size: 14px;
+      line-height: 1.8;
+    }
+
+    .footer {
+      margin-top: 16px;
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      box-shadow: 0 6px 20px rgba(23, 43, 77, 0.05);
+      padding: 14px 18px;
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.7;
+    }
+
+    .footer strong { color: #334155; }
+
+    @media (max-width: 980px) {
+      .hero-content {
+        grid-template-columns: 1fr;
+      }
+      .hero-side {
+        text-align: left;
+        min-width: 0;
+      }
+      .layout {
+        grid-template-columns: 1fr;
+      }
+      .side {
+        position: static;
+      }
+      .grid-2 {
+        grid-template-columns: 1fr;
+      }
+      .hero h1 { font-size: 28px; }
+    }
+
+    @media (max-width: 560px) {
+      .hero {
+        padding: 22px 16px;
+        border-radius: 16px;
+      }
+      .panel {
+        padding: 18px 16px 6px;
+      }
+      .section h3 {
+        font-size: 20px;
+      }
+      .section p {
+        font-size: 15px;
+      }
+      .badge {
+        font-size: 12px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header class="hero">
+      <div class="hero-content">
+        <div>
+          <h1>马源骏 · 个人主页（沙雕版）</h1>
+          <p class="subtitle">
+            食品实验室检验员｜白天严谨做实验，晚上认真搞笑（并尝试早睡，通常失败）
+          </p>
+
+          <div class="badge-list">
+            <span class="badge">🧪 食品实验室检验员</span>
+            <span class="badge">📊 对小数点敏感</span>
+            <span class="badge">🧾 看到标签会认真研究</span>
+            <span class="badge">😎 沙雕但靠谱</span>
+          </div>
+        </div>
+
+        <div class="hero-side">
+          <p class="quote">
+            “你们负责把食物吃得开心，<br>
+            我负责尽量让大家吃得安心。”<br>
+            —— 马源骏（以及他敬畏的小数点）
+          </p>
+        </div>
+      </div>
+    </header>
+
+    <div class="layout">
+      <!-- 侧边目录 -->
+      <aside class="side">
+        <h2>📚 目录导航</h2>
+        <ul class="toc" id="toc">
+          <li><a href="#intro" class="active">一句话自我介绍</a></li>
+          <li><a href="#identity">职业身份</a></li>
+          <li><a href="#daily">日常工作</a></li>
+          <li><a href="#occupational-habit">职业病发作现场</a></li>
+          <li><a href="#time">时间观念</a></li>
+          <li><a href="#data">数据与小数点</a></li>
+          <li><a href="#partners">仪器、标准和同事</a></li>
+          <li><a href="#personality">性格特点</a></li>
+          <li><a href="#career-goal">职业理想</a></li>
+          <li><a href="#ending">结尾</a></li>
+        </ul>
+
+        <div class="tip-card">
+          💡 小提示：这个页面是单文件 HTML，直接放到 GitHub Pages 就能用。后续你还可以加头像、联系方式、照片墙、证书展示等。
+        </div>
+      </aside>
+
+      <!-- 主内容 -->
+      <main class="main">
+        <article class="panel">
+          <section id="intro" class="section">
+            <h3>一句话自我介绍</h3>
+            <p>
+              大家好，我叫 <strong>马源骏</strong>。我的主要职业不是程序员，而是——
+              <strong>食品实验室检验员</strong>。
+            </p>
+            <p>
+              别人看到零食会说“这个好不好吃”，我看到零食会先想：
+              <span class="highlight">“嗯……水分、酸价、菌落总数、标签合规性，先别急，我想先看看报告。”</span>
+            </p>
+            <div class="callout">
+              简单来说，你们负责吃得开心，我负责尽量让大家吃得安心。听起来很伟大，实际上我的日常经常是：和样品、仪器、标准、记录表、以及加急单进行极限拉扯。
+            </div>
+          </section>
+
+          <section id="identity" class="section">
+            <h3>职业身份：不是厨子，也不是吃货，是“食品安全侦探”</h3>
+            <p>
+              很多人一听“食品实验室检验员”，会下意识以为我的工作是：天天吃东西、尝味道、顺便写个评价。
+              实际上并不是。我的工作更像是食品界的“侦探”——通过各种检测方法，从样品里找线索、看指标、做判断。
+            </p>
+            <p>
+              别人吃薯片关注“咔嚓脆不脆”，我可能会想：
+              <strong>“这批样品前处理做了吗？编号贴对了吗？数据重复性怎么样？”</strong>
+            </p>
+            <p>
+              所以如果你问我“这个东西能不能吃”，我通常不会立刻回答。我会先沉默三秒，然后用一种很专业但又很欠揍的语气说：
+              <span class="highlight">“理论上可以，实践中建议先看生产日期和保存条件。”</span>
+            </p>
+          </section>
+
+          <section id="daily" class="section">
+            <h3>日常工作：我和样品不得不说的故事</h3>
+            <p>我的工作日常，大概可以概括为以下几个环节：</p>
+            <ul>
+              <li>收样、编号、登记（先把身份搞清楚）</li>
+              <li>前处理、实验操作（先按标准来，不要乱发挥）</li>
+              <li>仪器检测、记录数据（和数字谈恋爱）</li>
+              <li>复核、复算、出结果（和自己较劲）</li>
+              <li>遇到异常再来一遍（和命运较劲）</li>
+            </ul>
+            <p>
+              表面上看起来，我每天都很冷静、很专业、很严谨。实际上我的内心戏常常是这样的：
+            </p>
+            <ul>
+              <li>“这个数据这么漂亮，不会是我哪里做错了吧？”</li>
+              <li>“这个数据这么离谱，不会是样品在跟我开玩笑吧？”</li>
+              <li>“再测一次，稳一点，做人要对得起小数点后两位。”</li>
+            </ul>
+            <p>
+              在实验室里，最让人安心的不是“差不多”，而是：
+              <strong>“我已经核对过三遍了。”</strong>
+            </p>
+          </section>
+
+          <section id="occupational-habit" class="section">
+            <h3>职业病发作现场：逛超市像在做审计</h3>
+            <p>作为一名食品实验室检验员，我有一些非常明显的职业病。</p>
+
+            <div class="grid-2">
+              <div class="mini">
+                <h4>1）看配料表比看价格还认真</h4>
+                <ul>
+                  <li>朋友看口味、包装、折扣</li>
+                  <li>我看配料表顺序、营养成分表、标签规范性</li>
+                  <li>别人已经结账，我还在研究蛋白质标注</li>
+                </ul>
+              </div>
+
+              <div class="mini">
+                <h4>2）对保质期和保存条件异常敏感</h4>
+                <ul>
+                  <li>不只看“过没过期”</li>
+                  <li>还会看常温/冷藏、包装是否完整</li>
+                  <li>安全感的一部分来自“封口看起来很正常”</li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="mini" style="margin-bottom:14px;">
+              <h4>3）吃饭时脑子会自动开检测模式</h4>
+              <ul>
+                <li>正常人吃饭：香。</li>
+                <li>我吃饭：香……但这个口感变化有点微妙。</li>
+                <li>下班后我也想当个单纯的干饭人，只是大脑有时候不允许。</li>
+              </ul>
+            </div>
+          </section>
+
+          <section id="time" class="section">
+            <h3>时间观念：我不是按钟表活着，我是按实验流程活着</h3>
+            <p>普通人记时间靠时钟，我记时间靠实验步骤。</p>
+            <ul>
+              <li><strong>等 5 分钟</strong> = 还能顺手洗两个烧杯</li>
+              <li><strong>等 30 分钟</strong> = 足够写完半页记录并怀疑一次人生</li>
+              <li><strong>过夜观察</strong> = 明天的我会感谢今天认真贴标签的我</li>
+            </ul>
+            <p>
+              说到贴标签，这件事在实验室里真的不只是“顺手一贴”。它的重要程度堪比生活中的“记得带钥匙”。
+              实验室最浪漫的话可能不是“我爱你”，而是：
+              <span class="highlight">“样品编号我已经帮你核对好了。”</span>
+            </p>
+          </section>
+
+          <section id="data" class="section">
+            <h3>数据与小数点：我的情绪稳定器（也是情绪破坏者）</h3>
+            <p>
+              我对数字有一种天然的敬畏。因为在实验室里，
+              <strong>0.1 和 1.0 的差别，可能不仅是小数点的位置，也是心跳速度的区别</strong>。
+            </p>
+            <p>
+              别人常说“差不多就行”，我会礼貌地点点头，然后默默把移液枪重新吸一遍。
+              不是我矫情，是因为我真的见过太多事故都始于一句：
+              <span class="highlight">“应该没问题吧。”</span>
+            </p>
+            <p>
+              在实验室里，最可怕的四个字不是“结果异常”，而是：
+              <strong>“我记得我做了。”</strong>
+            </p>
+            <p>
+              所以我的做事风格通常是：做了要记，记了要核，核了再看，看完还想再确认一下。别人觉得我谨慎，我觉得这只是为了晚上能安心睡觉。
+            </p>
+          </section>
+
+          <section id="partners" class="section">
+            <h3>仪器、标准和同事：我的三大“工作搭子”</h3>
+            <p>我的工作其实不只是“做实验”，更像是一场团队协作，只不过队友有时候不是人。</p>
+
+            <div class="grid-2">
+              <div class="mini">
+                <h4>1）仪器：你对它好，它关键时刻才不摆烂</h4>
+                <ul>
+                  <li>平时认真维护、按规范使用</li>
+                  <li>关键时候才不会给你弹“异常报警”</li>
+                  <li>关系总结：平时互相尊重，关键时刻彼此救命</li>
+                </ul>
+              </div>
+
+              <div class="mini">
+                <h4>2）标准：每个字都像在出阅读理解</h4>
+                <ul>
+                  <li>每个条件都有前提</li>
+                  <li>每个步骤都有边界</li>
+                  <li>每个字都可能影响最终结论</li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="mini" style="margin-bottom:14px;">
+              <h4>3）同事：实验室里的灵魂伴侣</h4>
+              <ul>
+                <li>经典对话：“你这个空白做了吗？”“做了。”“真的？”“……我再确认一下。”</li>
+                <li>听起来很好笑，但其实特别重要</li>
+                <li>在这个行业里，靠谱不是形容词，是一种集体习惯</li>
+              </ul>
+            </div>
+          </section>
+
+          <section id="personality" class="section">
+            <h3>性格特点：工作上严谨，生活里发癫（适度）</h3>
+            <p>
+              如果一定要总结我的个人风格，大概是：
+            </p>
+            <div class="callout">
+              <strong>工作上严谨认真，生活里偶尔发疯；对样品高度负责，对自己偶尔摆烂（但不影响出报告）。</strong>
+            </div>
+            <p>
+              我平时也挺幽默的，只是笑点可能有点实验室限定版：
+            </p>
+            <ul>
+              <li>别人追求稳定情绪，我追求稳定标准曲线</li>
+              <li>别人害怕人生波动，我害怕检测结果波动</li>
+              <li>别人说生活要有仪式感，我说实验要有仪器感</li>
+            </ul>
+            <p>
+              听起来很离谱，但这就是我的真实状态：一个能在认真工作和沙雕发言之间自由切换的人。
+            </p>
+          </section>
+
+          <section id="career-goal" class="section">
+            <h3>职业理想：做一个能让人放心的检验员</h3>
+            <p>在职业追求上，我希望自己能成为那种：</p>
+            <ul>
+              <li>看到异常能冷静分析的人</li>
+              <li>看到细节能立刻警觉的人</li>
+              <li>看到标准能迅速定位的人</li>
+              <li>看到加急单也尽量保持微笑的人</li>
+            </ul>
+            <p>
+              在生活追求上，我希望自己能成为那种：下班后面对晚饭时，
+              <strong>不再自动开启“感官+理化+微生物三位一体评估模式”</strong> 的普通人。（目前仍在努力，进度感人。）
+            </p>
+            <p>
+              我始终觉得，一个好的食品实验室检验员，不只是会做实验、会看数据、会写报告，还要具备一种很重要的能力：
+              <span class="highlight">在重复、严谨、琐碎、紧张的工作中，依然能保持耐心和一点点幽默感。</span>
+            </p>
+            <p>
+              毕竟当你已经连续核对表格、清洗器皿、记录数据、复算结果之后，还能笑着说一句：
+              <strong>“问题不大，我再确认一遍。”</strong>
+              这已经不只是职业素养了，这多少带点修行。
+            </p>
+          </section>
+
+          <section id="ending" class="section">
+            <h3>结尾：如果你也懂那种“少加一步”的痛</h3>
+            <p>
+              我是 <strong>马源骏</strong>，一名食品实验室检验员。平时和样品打交道，偶尔和人生讲道理。
+            </p>
+            <p>欢迎交流、欢迎合作、欢迎分享行业趣事。如果你也经历过：</p>
+            <ul>
+              <li>实验做到一半发现少加一步</li>
+              <li>数据算完发现单位写错</li>
+              <li>报告快写完发现样品编号要回头核对</li>
+            </ul>
+            <p>
+              那我们大概会很有共同语言。😎 毕竟成年人的崩溃往往很安静，而检验员的崩溃通常还会补一句：
+              <span class="highlight">“先别慌，按流程来。”</span>
+            </p>
+          </section>
+        </article>
+
+        <footer class="footer">
+          <strong>使用说明：</strong>
+          把本文件保存为 <code>index.html</code> 放到 GitHub 仓库根目录即可。你当前仓库名是 <code>personal</code>，发布后访问地址一般是
+          <code>https://laizhuangji0601.github.io/personal/</code>。
+        </footer>
+      </main>
+    </div>
+  </div>
+
+  <script>
+    // 目录高亮（滚动时自动切换）
+    (function () {
+      const links = Array.from(document.querySelectorAll('#toc a'));
+      const sections = links
+        .map(link => document.querySelector(link.getAttribute('href')))
+        .filter(Boolean);
+
+      function updateActive() {
+        const y = window.scrollY + 140;
+        let current = sections[0];
+
+        for (const sec of sections) {
+          if (sec.offsetTop <= y) current = sec;
+        }
+
+        links.forEach(link => {
+          const active = link.getAttribute('href') === '#' + current.id;
+          link.classList.toggle('active', active);
+        });
+      }
+
+      window.addEventListener('scroll', updateActive, { passive: true });
+      window.addEventListener('load', updateActive);
+    })();
+  </script>
+</body>
+</html>
